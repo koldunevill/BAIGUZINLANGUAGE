@@ -1,0 +1,28 @@
+﻿<Window x:Class="BAIGUZINLANGUAGE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BAIGUZINLANGUAGE"
+        mc:Ignorable="d"
+        Title="Байгуизн Егор ИСП 3221 8Марта дом 6 Комната 419" Height="450" Width="800" FontFamily="Comic Sans MS" Icon="Res/school_logo.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Background="#FBE7FABF"></TextBlock>
+        <TextBlock Background="#FBE7FABF" Grid.Row="2"></TextBlock>
+
+        <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Байгуизн Егор ИСП 3221 8Марта дом 6 Комната 419" FontSize="20"/>
+
+        <Image Source="Res/school_logo.png" HorizontalAlignment="Left"></Image>
+
+
+        <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"/>
+        <Button Content="Домой" Grid.Row="0" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
