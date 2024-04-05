@@ -59,6 +59,20 @@ namespace BAIGUZINLANGUAGE
                 return BaiguzinLanguageEntities.GetContext().ClientService.Where(x => x.ClientID == this.ID).Max(p => p.StartTime);
             }
         }
+        public string LastVisitDateN
+        {
+            get
+            {
+                if (VisitCount == 0)
+                {
+                    return "Нет";
+                }
+                else
+                {
+                    return BaiguzinLanguageEntities.GetContext().ClientService.Where(x => x.ClientID == this.ID).Max(p => p.StartTime).ToString();
+                }
+            }
+        }
         public string LastDate => LastVisitDate.ToShortDateString();
     }
 }

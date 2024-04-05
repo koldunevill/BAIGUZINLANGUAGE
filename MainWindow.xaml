@@ -21,7 +21,7 @@
         <Image Source="Res/school_logo.png" HorizontalAlignment="Left"></Image>
 
 
-        <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="1" Grid.RowSpan="2" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"/>
         <Button Content="Домой" Grid.Row="0" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
     </Grid>
