@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,26 +25,26 @@ namespace BAIGUZINLANGUAGE
         int CountRecords;
         int CountRecordsMax = BaiguzinLanguageEntities.GetContext().Client.ToList().Count();
         int CountPage;
-
+        int actualSizeLW = 0;
         int CurrentPage = 0;
         List<Client> TableList;
 
         public CLientPage()
         {
             InitializeComponent();
-
             List<Client> currentClients = BaiguzinLanguageEntities.GetContext().Client.ToList();
 
             ClientListView.ItemsSource = currentClients;
-            ComboType.SelectedIndex = 3;
+            ComboType.SelectedIndex = 0;
             FiltrBox.SelectedIndex = 0;
             SortBox.SelectedIndex = 0;
             TBAllRecords.Text = CountRecordsMax.ToString();
-
+           
             ClientUpdate();
         }
 
-        private void ClientUpdate()
+
+        public void ClientUpdate()
         {
             var currentClients = BaiguzinLanguageEntities.GetContext().Client.ToList();
 
@@ -74,7 +75,7 @@ namespace BAIGUZINLANGUAGE
             }
 
             currentClients = currentClients.Where(p => p.LastName.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.FirstName.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Patronymic.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Email.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Phone.Replace("+", "").Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "").ToLower().Contains(TBoxSearch.Text.Replace("+", "").Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "").ToLower())).ToList();
-
+ 
             TBAllRecords.Text = BaiguzinLanguageEntities.GetContext().Client.ToList().Count().ToString();
             TBCount.Text = currentClients.Count().ToString();
 
@@ -109,6 +110,7 @@ namespace BAIGUZINLANGUAGE
             TableList = currentClients;
             CountPage = TableList.Count;
             CountRecords = TableList.Count;
+            actualSizeLW = TableList.Count;
             TBAllRecords.Text = " из " + CountRecordsMax.ToString();
             ChangePage(0, 0);
         }
@@ -276,6 +278,23 @@ namespace BAIGUZINLANGUAGE
 
         private void TBoxSearch_TextChanged_1(object sender, TextChangedEventArgs e)
         {
+            ClientUpdate();
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var client = button.DataContext as Client;
+            if (client != null)
+            {
+                Manager.MainFrame.Navigate(new AddEditPage(client));
+                ClientUpdate();
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage(null));
             ClientUpdate();
         }
     }

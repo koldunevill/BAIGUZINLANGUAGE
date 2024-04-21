@@ -38,7 +38,10 @@
                 <TextBlock>по количеству посещений</TextBlock>
             </ComboBox>
         </StackPanel>
+        <StackPanel>
+        </StackPanel>
 
+        <Button Name="AddButton" Height="30" Width="150" Click="AddButton_Click" Content="Добавить клиента" HorizontalAlignment="Left" Grid.Row="2" FontSize="15" Margin="0 0 10 0 "/>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
             <TextBlock Text="Выводить по "></TextBlock>
             <ComboBox Name="ComboType" Width="200" SelectionChanged="ComboType_SelectionChanged">
@@ -59,7 +62,7 @@
             </ListBox>
             <Button Name="RightDirButton" Content="&gt;" Width="20" Height="20" Click="RightDirButton_Click" FontSize="15" Visibility="Hidden"></Button>
         </StackPanel>
-
+        
         
         
         <ListView Grid.Row="1" Name="ClientListView">
@@ -92,10 +95,10 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        
-                        
 
-                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="7"  Stretch="Uniform" HorizontalAlignment="Left" Width="150" Height="150"
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Grid.RowSpan="7">
+                            <Image Grid.Column="0" Grid.Row="0"   Stretch="Uniform" HorizontalAlignment="Left" Width="150" Height="150"
                                 Margin="10 10 10 10">
                             <Image.Source>
                                 <Binding Path="PhotoPath">
@@ -107,8 +110,10 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        <Button Name="BtnDelete" Content="Удалить" Click="BtnDelete_Click" Grid.Column="0" Grid.Row="7"/>
-
+                            <Button Name="BtnDelete" Content="Удалить" Click="BtnDelete_Click" Height="30" Margin="0" Width="145"/>
+                            <Button Name="BtnEdit" Content="Редактировать" Click="BtnEdit_Click" Height="30" Margin="0" Width="145"/>
+                        </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="{Binding ID}" FontWeight="Bold" FontSize="25"/>
                             <TextBlock Text=" " FontWeight="Bold"/>

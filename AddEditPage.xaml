@@ -9,6 +9,69 @@
       Title="AddEditPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="ID" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"/>
+            <TextBlock Text="{Binding ID}" Name="IDClient" FontSize="15" Height="30" Width="500"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Фамилия" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"/>
+            <TextBox Text="{Binding FirstName}" Name="Famil" FontSize="15" Height="30" Width="500"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Имя" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"/>
+            <TextBox Text="{Binding LastName}" Name="Name" FontSize="15" Height="30" Width="500"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Text="Отчество" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"/>
+            <TextBox Text="{Binding Patronymic}" Name="Otchestvo" FontSize="15" Height="30" Width="500"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical" Grid.RowSpan="3">
+            <TextBlock Text="Фото" FontSize="15" Height="20" MinWidth="120" Width="auto" Margin="5"/>
+            <Image Name="LogoImage" Stretch="UniformToFill" MinHeight="50" Height="100" Width="100" HorizontalAlignment="Center" Margin="5">
+                <Image.Source>
+                    <Binding Path="PhotoPath" TargetNullValue="Res/picture.png"/>
+                </Image.Source>
+            </Image>
+            <Button Content="Изменить" Name="ChangePictureBtn" Click="ChangePictureBtn_Click" Height="30" Width="175" Background="#FF04A0FF" Foreground="Black" BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="Пол" FontSize="15" Height="20" Width="100" Margin="1"/>
+            <ComboBox SelectedIndex="{Binding Code}" Name="CB_Sel" Width="200" Height="30" FontSize="15" Margin="5" >
+                <TextBlock>Женский</TextBlock>
+                <TextBlock>Мужской</TextBlock>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="Телефон" FontSize="15" Height="20" Width="100" Margin="1"/>
+            <TextBox Text="{Binding Phone}" Name="Phone" FontSize="15" Height="30" Width="250"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="E-mail" FontSize="15" Height="20" Width="100" Margin="1"/>
+            <TextBox Text="{Binding Email}" Name="Email" FontSize="15" Height="30" Width="250"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="Дата рождения" FontSize="15" Height="20" Width="100" Margin="1"/>
+            <DatePicker Name ="BirthDay" Width="200">
+                <DatePicker.SelectedDate>
+                    <Binding Path="Birthday"/>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="5" Margin="5" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Button Content="Сохранить" Name="SaveBtn" Click="SaveBtn_Click" Height="50" Width="200" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>
